@@ -81,3 +81,11 @@ function set_color(r, g, b) {
   color_b = b;
   fill(color_r, color_g, color_b);
 }
+
+function send() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", '/', false);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify({strokes: brush_strokes}));
+  location.reload();
+}

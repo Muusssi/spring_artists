@@ -11,16 +11,25 @@
   <body>
     <div>
       <div>
-        <button onclick="publish();">Valmis</button>
+        <button onclick="send();">Valmis</button>
         <button onclick="clear_last_stroke();">Pyyhi</button>
-        <svg height="100" width="250" xmlns="http://www.w3.org/2000/svg">
+        <svg height="100" width="50%" xmlns="http://www.w3.org/2000/svg">
           <circle cx="50" cy="50" r="25" onclick="set_brush_size(25)"/>
-          <circle cx="150" cy="50" r="50" onclick="set_brush_size(50)"/>
+          <circle cx="150" cy="50" r="50" onclick="set_brush_size(100)"/>
+          <circle cx="300" cy="50" r="80" onclick="set_brush_size(200)"/>
         </svg>
         <div style="display: inline-block;">
-          <span class="color_button" onclick="set_color(255, 0, 0);" style="background: red; color: red;">---</span>
-          <span class="color_button" onclick="set_color(0, 255, 0);" style="background: green; color: green;">---</span>
-          <span class="color_button" onclick="set_color(0, 0, 255);" style="background: blue; color: blue;">---</span>
+          <span class="color_button" onclick="set_color(0, 102, 0);" style="background: #006600; color: #006600;">---</span>
+          <span class="color_button" onclick="set_color(51, 204, 51);" style="background: #33cc33; color: #33cc33;">---</span>
+          <span class="color_button" onclick="set_color(255, 255, 0);" style="background: #ffff00; color: #ffff00;">---</span>
+          <span class="color_button" onclick="set_color(102, 51, 0);" style="background: #663300; color: #663300;">---</span>
+          <span class="color_button" onclick="set_color(255, 153, 51);" style="background: #ff9933; color: #ff9933;">---</span>
+          <span class="color_button" onclick="set_color(255, 0, 0);" style="background: #ff0000; color: #ff0000;">---</span>
+          <span class="color_button" onclick="set_color(255, 51, 153);" style="background: #ff3399; color: #ff3399;">---</span>
+          <span class="color_button" onclick="set_color(102, 0, 204);" style="background: #6600cc; color: #6600cc;">---</span>
+          <span class="color_button" onclick="set_color(0, 102, 255);" style="background: #0066ff; color: #0066ff;">---</span>
+          <span class="color_button" onclick="set_color(0, 0, 0);" style="background: #000000; color: #000000;">---</span>
+          <span class="color_button" onclick="set_color(255, 255, 255);" style="background: #ffffff; color: #ffffff;">---</span>
         </div>
 
 

@@ -1,4 +1,5 @@
 
+import json
 import os
 import sys
 
@@ -17,6 +18,7 @@ class Application(tornado.web.Application):
     def __init__(self, database):
         handlers = [
                 (r"/", MainPageHandler),
+                (r"/data/paintings", PaintingsDataHandler),
             ]
 
         settings = dict(
@@ -42,16 +44,30 @@ class MainPageHandler(BaseHandler):
     def get(self):
         self.render("main_page.html")
 
+    def post(self):
+        strokes = json.loads(self.request.body).get('strokes', [])
+        painting_id = self.db.store_painting(strokes)
+        print(painting_id)
 
-PORT = 8003
+class PaintingsDataHandler(BaseHandler):
+    def get(self):
+        self.write({'paintings': self.db.paintings()})
+
+
+def load_config_file(config_file):
+    with open(config_file, 'r') as f:
+        return json.load(f)
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("error: missing password")
+        print("error: missing config file")
         sys.exit(1)
 
-    httpserver = tornado.httpserver.HTTPServer(Application(db.Database(sys.argv[1])))
-    httpserver.listen(PORT)
-    print('starting server:', PORT)
+    config = load_config_file(sys.argv[1])
+    database = db.Database(config)
+    httpserver = tornado.httpserver.HTTPServer(Application(database))
+    httpserver.listen(config['port'])
+    print('starting server:', config['port'])
     tornado.ioloop.IOLoop.current().start()
 
