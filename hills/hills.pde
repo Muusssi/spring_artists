@@ -2,15 +2,17 @@
 
 static final float scale = 0.1;
 
-String paintings_url = "http://localhost:8003/data/paintings";
+String paintings_url = "http://localhost:8888/data/paintings";
 
 PImage background;
 HashMap<Integer,Painting> paintings = new HashMap<Integer,Painting>();
 
+boolean debug = true;
+
 void setup() {
   //size(1000, 800, P2D);
   fullScreen(P2D);
-  frameRate(20);
+  frameRate(30);
   background = loadImage("xp_hills.jpg");
   update_paintings_data();
 }
@@ -23,10 +25,18 @@ void draw() {
   for (Painting painting : paintings.values()) {
     painting.draw();
   }
+  if (frameCount%1000 == 0) {
+    update_paintings_data();
+  }
 }
 
 void keyPressed() {
-  update_paintings_data();
+  if (keyCode == ' ') {
+    update_paintings_data();
+  }
+  else if (keyCode == 'B') {
+    debug = !debug;
+  }
 }
 
 
@@ -97,7 +107,7 @@ public class Painting {
     }
     else {
       life_counter++;
-      if (life_counter > 100) {
+      if (life_counter > 1000) {
         this.reset_canvas();
       }
     }
@@ -105,6 +115,9 @@ public class Painting {
 
   void draw() {
     this.paint();
+    if (debug) {
+      text(this.id, this.x, this.y);
+    }
     image(this.canvas, this.x, this.y, this.painting_width*scale, this.painting_height*scale);
   }
 
