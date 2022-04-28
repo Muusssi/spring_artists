@@ -5,8 +5,8 @@ button {
 }
 
 span.color_button {
-    width: 2.8em;
-    height: 2.8em;
-    font-size: 4em;
+    width: 2em;
+    height: 2em;
+    font-size: 3em;
     border: solid 3px black;
 }
