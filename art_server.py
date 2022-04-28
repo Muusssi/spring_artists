@@ -7,7 +7,7 @@ import tornado.ioloop
 import tornado.web
 import tornado.httpserver
 
-import database as db
+#import database as db
 
 APP_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 STATIC_DIRECTORY = os.path.abspath(os.path.join(APP_DIRECTORY, 'static'))
@@ -65,8 +65,9 @@ if __name__ == "__main__":
         sys.exit(1)
 
     config = load_config_file(sys.argv[1])
-    database = db.Database(config)
-    httpserver = tornado.httpserver.HTTPServer(Application(database))
+    #database = db.Database(config)
+    #httpserver = tornado.httpserver.HTTPServer(Application(database))
+    httpserver = tornado.httpserver.HTTPServer(Application(None))
     httpserver.listen(config['port'])
     print('starting server:', config['port'])
     tornado.ioloop.IOLoop.current().start()
