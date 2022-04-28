@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <div>
+      <main style="height: 70vh; width: 100%;"></main>
       <div>
         <button onclick="send();">Valmis</button>
         <button onclick="clear_last_stroke();">Pyyhi</button>
@@ -19,7 +19,7 @@
           <circle cx="150" cy="50" r="50" onclick="set_brush_size(100)"/>
           <circle cx="300" cy="50" r="80" onclick="set_brush_size(200)"/>
         </svg>
-        <div style="display: inline-block;">
+        <div class="controlBox">
           <span class="color_button" onclick="set_color(0, 102, 0);" style="background: #006600; color: #006600;">---</span>
           <span class="color_button" onclick="set_color(51, 204, 51);" style="background: #33cc33; color: #33cc33;">---</span>
           <span class="color_button" onclick="set_color(255, 255, 0);" style="background: #ffff00; color: #ffff00;">---</span>
@@ -32,15 +32,6 @@
           <span class="color_button" onclick="set_color(0, 0, 0);" style="background: #000000; color: #000000;">---</span>
           <span class="color_button" onclick="set_color(255, 255, 255);" style="background: #ffffff; color: #ffffff;">---</span>
         </div>
-
-
       </div>
-      <div>
-        <main style="height: 90vh; width: 100%;"></main>
-      </div>
-    </div>
-
-
-
   </body>
 </html>

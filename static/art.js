@@ -9,7 +9,7 @@ var brush_strokes = [];
 var last_stroke = [];
 
 function setup() {
-  createCanvas(windowWidth, 0.8*windowHeight);
+  createCanvas(windowWidth, 0.7*windowHeight);
   background(200);
 
   fill(color_r, color_g, color_b);
@@ -44,7 +44,7 @@ function touchEnded() {
 
 function is_drawing() {
   if (last_stroke.length == 0 || dist(last_stroke[last_stroke.length - 1][0], last_stroke[last_stroke.length - 1][1], mouseX, mouseY) > 0.1*brush_size) {
-    if (mouseY > 0) {
+    if (mouseY > 0 && mouseY < height) {
       return true;
     }
   }
