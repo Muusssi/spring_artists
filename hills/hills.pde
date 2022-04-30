@@ -1,8 +1,6 @@
 
-
 static final float scale = 0.1;
 
-String paintings_url = "http://localhost:8888/data/paintings";
 
 PImage background;
 HashMap<Integer,Painting> paintings = new HashMap<Integer,Painting>();
@@ -38,20 +36,6 @@ void keyPressed() {
     debug = !debug;
   }
 }
-
-
-void update_paintings_data() {
-  JSONArray paintings_list = loadJSONObject(paintings_url).getJSONArray("paintings");
-  for (int i = 0; i < paintings_list.size(); ++i) {
-    JSONObject painting_data = paintings_list.getJSONObject(i);
-    if (!paintings.containsKey(painting_data.getInt("id"))) {
-      new Painting(painting_data);
-    }
-
-  }
-
-}
-
 
 
 public class Painting {
